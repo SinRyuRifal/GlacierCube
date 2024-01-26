@@ -1,0 +1,3 @@
+String url = "jdbc:postgresql://localhost:5432/EsBatuFinal";
+String user = "postgres";
+String pass = "MRNI135.";
