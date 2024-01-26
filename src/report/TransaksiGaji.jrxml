@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="842" pageHeight="800" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="16d2f81f-2ff5-4064-9f28-5e68e86b09cd">
+	<property name="ireport.zoom" value="1.7715610000000606"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="tgl1" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tgl2" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+    T.IDTRANSAKSIGAJI,
+    T.TANGGALGAJIAN,
+    K.NAMAKARYAWAN,
+    G.GAJIPOKOK,
+    G.TUNJANGAN,
+    G.POTONGAN,
+    T.GAJIBERSIH
+FROM
+    TRANSAKSIGAJI T
+    JOIN KARYAWAN K ON T.IDKARYAWAN = K.IDKARYAWAN
+    JOIN GAJIKARYAWAN G ON T.IDGAJI = G.IDGAJI
+WHERE
+T.tanggalgajian between $P{tgl1} and $P{tgl2};]]>
+	</queryString>
+	<field name="idtransaksigaji" class="java.lang.String"/>
+	<field name="tanggalgajian" class="java.lang.String"/>
+	<field name="namakaryawan" class="java.lang.String"/>
+	<field name="gajipokok" class="java.lang.Double"/>
+	<field name="tunjangan" class="java.lang.Double"/>
+	<field name="potongan" class="java.lang.Double"/>
+	<field name="gajibersih" class="java.lang.Double"/>
+	<variable name="Total" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{gajibersih}]]></variableExpression>
+	</variable>
+	<variable name="idtransaksigaji_1" class="java.lang.Integer" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{idtransaksigaji}]]></variableExpression>
+	</variable>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="59">
+			<staticText>
+				<reportElement x="331" y="13" width="100" height="20" uuid="96928978-385c-42b6-b35b-fa2ff67fba42"/>
+				<textElement>
+					<font fontName="Times New Roman" size="15"/>
+				</textElement>
+				<text><![CDATA[GlacierCube]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="319" y="39" width="126" height="20" uuid="6b3861cc-c505-4b8d-9078-604b7685272b"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Jl. Kerajaan Candi Lontar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="617" y="13" width="133" height="20" uuid="c3c8f70d-2e99-4dc9-970f-b52ff42b5c2b"/>
+				<textElement>
+					<font fontName="Times New Roman" size="15"/>
+				</textElement>
+				<text><![CDATA[TRANSAKSI GAJI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="646" y="33" width="67" height="20" uuid="2c385a2d-b79d-44eb-a412-39fb61a27714"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Detail Transaksi Gaji]]></text>
+			</staticText>
+			<image>
+				<reportElement x="248" y="1" width="61" height="58" uuid="b2b28b42-6dfb-4431-ac1b-c9ccdd2bbdae"/>
+				<imageExpression><![CDATA["C:\\Users\\Rifal\\Dropbox\\PC\\Downloads\\GC.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="22">
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="-20" y="2" width="142" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="8a5d4d5f-b3d6-455c-b38b-fcdb62766188"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Bookman Old Style" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Transaksi Gaji]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="370" y="2" width="103" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ad9ce809-023c-46db-94d8-b02cd0f628da"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Bookman Old Style" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gaji Pokok]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="473" y="2" width="96" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="a180ca20-5ecf-4170-ade3-a62f54e38d97"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Bookman Old Style" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tunjangan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="569" y="2" width="93" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="e9d65abc-db8c-47fb-8962-6736d053f6bd"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Bookman Old Style" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Potongan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="662" y="2" width="161" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="8bbe420d-5da4-4fe6-abbd-ec1b632432d1"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Bookman Old Style" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gaji Bersih]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="122" y="2" width="116" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="6184af0b-2616-4718-a193-c25b2809da8b"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Bookman Old Style" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Gajian]]></text>
+			</staticText>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="238" y="2" width="132" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="5cf08362-3d9c-4977-9fbe-f09b1ae574f2"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Bookman Old Style" size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Karyawan]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="238" y="0" width="132" height="20" uuid="2fa9be71-d6c4-435f-87ba-73a915699b2e"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Bookman Old Style" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{namakaryawan}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="473" y="0" width="96" height="20" uuid="1e8fa0d4-6fd1-49ad-88c7-afed68f780d2"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Bookman Old Style" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tunjangan}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="370" y="0" width="103" height="20" uuid="0e19138f-d27a-4ac3-abe9-5501d9ad283a"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Bookman Old Style" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gajipokok}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="662" y="0" width="161" height="20" uuid="84b33ef8-16a8-4ee5-a892-a0db0f4c02d6"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Bookman Old Style" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{gajibersih}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement stretchType="RelativeToBandHeight" x="122" y="0" width="116" height="20" uuid="a816aa93-5db2-4c0b-b7bd-78bf15154a5c"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Bookman Old Style" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tanggalgajian}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="-20" y="0" width="142" height="20" uuid="41ecf9ae-3775-4de5-8c36-6bbabc3fe850"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Bookman Old Style" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idtransaksigaji}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="569" y="0" width="93" height="20" uuid="8651016b-3dec-4a51-a045-78132f20c307"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+					<leftPen lineWidth="0.25"/>
+					<bottomPen lineWidth="0.25"/>
+					<rightPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Bookman Old Style" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{potongan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="171" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="72fb8290-17dd-4c8e-b5d3-e2ac7bbf3006"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="783" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="36980d15-8f03-4331-965e-41ecc9879f50"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="2" y="4" width="169" height="13" uuid="6e8cfa70-64cc-473c-83ae-014fa8be6c68"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="73">
+			<textField pattern="#,##0.00; (#,##0.00)" isBlankWhenNull="true">
+				<reportElement x="198" y="53" width="100" height="20" uuid="b509c0e5-13f2-484a-a21d-7fc21dd363b2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" size="14" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="53" width="152" height="20" uuid="4e96f4e1-3be1-4f16-842a-48ad96d2de1f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Gaji Dibayarkan:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="33" width="152" height="20" uuid="6e8df6ee-3672-4849-bbf4-61e77d4bfa7e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jumlah Penggajian:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="198" y="33" width="100" height="20" uuid="dc471db8-247d-4ead-b94a-b3c2d92e1e11"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{idtransaksigaji_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

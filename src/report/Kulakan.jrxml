@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="350" pageHeight="500" columnWidth="310" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ddd09689-1aaa-409a-9519-ab8572bc62f7">
+	<property name="ireport.zoom" value="1.7715610000000077"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="kode" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+    pb.IDPEMBELIAN,
+    pb.IDSUPPLIER,
+    pb.IDKARYAWAN,
+    pb.TGLPEMBELIAN,
+    pb.TOTALPEMBELIAN,
+    pb.TOTALHARGAPEMBELIAN,
+    pb.STATUSPEMBELIAN,
+    dk.KODEDETAILBELI,
+    dk.IDPEMBELIAN,
+    dk.IDBAHAN,
+    dk.HARGABELI,
+    dk.SUBTOTALPEMBELIAN,
+    dk.SUBTOTALHARGAPEMBELIAN,
+    pp.IDPEMBAYARANPEMBELIAN,
+    pp.TGLPEMBAYARANPEMBELIAN,
+    pp.TOTALPEMBAYARANPEMBELIAN,
+    pp.SISAPEMBAYARANPEMBELIAN,
+    pp.KEMBALIANPEMBAYARANPEMBELIAN,
+    k.NAMAKARYAWAN,
+    s.ALAMATSUPPLIER,
+    s.TOKOSUPPLIER,
+    bb.NAMABAHAN
+FROM
+    PEMBELIAN pb
+JOIN
+    DETAILPEMBELIAN dk ON pb.IDPEMBELIAN = dk.IDPEMBELIAN
+JOIN
+    PEMBAYARANPEMBELIAN pp ON pb.IDPEMBELIAN = pp.IDPEMBELIAN
+JOIN
+    KARYAWAN k ON pb.IDKARYAWAN = k.IDKARYAWAN
+JOIN
+    SUPPLIER s ON pb.IDSUPPLIER = s.IDSUPPLIER
+JOIN
+    BAHANBAKU bb ON dk.IDBAHAN = bb.IDBAHAN
+WHERE
+    pb.IDPEMBELIAN = $P{kode};]]>
+	</queryString>
+	<field name="idpembelian" class="java.lang.String"/>
+	<field name="idsupplier" class="java.lang.String"/>
+	<field name="idkaryawan" class="java.lang.String"/>
+	<field name="tglpembelian" class="java.lang.String"/>
+	<field name="totalpembelian" class="java.lang.Integer"/>
+	<field name="totalhargapembelian" class="java.lang.Double"/>
+	<field name="statuspembelian" class="java.lang.String"/>
+	<field name="kodedetailbeli" class="java.lang.String"/>
+	<field name="idbahan" class="java.lang.String"/>
+	<field name="hargabeli" class="java.lang.Double"/>
+	<field name="subtotalpembelian" class="java.lang.Integer"/>
+	<field name="subtotalhargapembelian" class="java.lang.Double"/>
+	<field name="idpembayaranpembelian" class="java.lang.String"/>
+	<field name="tglpembayaranpembelian" class="java.lang.String"/>
+	<field name="totalpembayaranpembelian" class="java.lang.Double"/>
+	<field name="sisapembayaranpembelian" class="java.lang.Double"/>
+	<field name="kembalianpembayaranpembelian" class="java.lang.Double"/>
+	<field name="namakaryawan" class="java.lang.String"/>
+	<field name="alamatsupplier" class="java.lang.String"/>
+	<field name="tokosupplier" class="java.lang.String"/>
+	<field name="namabahan" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<image>
+				<reportElement x="121" y="-14" width="67" height="75" uuid="80b646f6-6d42-41b1-a33d-aef8c579dfb8"/>
+				<imageExpression><![CDATA["C:\\Users\\Rifal\\Dropbox\\PC\\Downloads\\GlacierCube png.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="107" y="45" width="100" height="20" uuid="abe25036-4b93-4580-b7e3-97c5ff35cddc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="15"/>
+				</textElement>
+				<text><![CDATA[GlacierCube]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="106" y="65" width="116" height="20" uuid="724380c2-e49d-4206-bdd4-60a7c82c3c0a"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Jl. Kerajaan Candi Lontar]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="86" splitType="Stretch">
+			<textField>
+				<reportElement x="108" y="6" width="100" height="20" uuid="994e4591-0673-41ed-8cdb-9e8ff5586f49"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idpembelian}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="6" width="100" height="20" uuid="405e3931-77c0-4bb8-b95d-4d8bb4b9b2af"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<text><![CDATA[ID Pembelian]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="108" y="26" width="100" height="20" uuid="f975dd5e-b9af-4d2c-b862-4e0976e7d28a"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idsupplier}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="26" width="100" height="20" uuid="66e78dcd-ebba-4fd4-85fc-4bd5696963f5"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<text><![CDATA[ID Suplier]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="108" y="66" width="100" height="20" uuid="ff08210e-e2fa-4b4e-8aa9-d9e9f91b6b9c"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tglpembelian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="108" y="46" width="100" height="20" uuid="b2774328-e7c2-49b7-9140-5f5e91fc5ac0"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{namakaryawan}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="6" y="46" width="100" height="20" uuid="a3b850f7-3101-45de-8946-232370f853f8"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<text><![CDATA[Admin]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="6" y="0" width="100" height="20" uuid="d3f70e63-44ea-4f22-bc91-d4b99cf3dac0"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<text><![CDATA[Nama Bahan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="0" width="47" height="20" uuid="64dbb17c-e272-4669-a017-fd3e9166ee04"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="165" y="0" width="56" height="20" uuid="5d3c0952-b4ea-4aae-a91f-cedb5775abc5"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<text><![CDATA[Harga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="234" y="0" width="74" height="20" uuid="37f37c65-33c9-40a5-bb7d-0519c11dc967"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<text><![CDATA[Sub Total Harga]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="7" y="3" width="100" height="20" uuid="212a8a4e-eef5-4db5-ac57-9f0144e80e52"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{namabahan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="111" y="3" width="47" height="20" uuid="e3b75655-d15c-4e90-bf00-d30b91b035ed"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subtotalpembelian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="166" y="3" width="56" height="20" uuid="67cf9002-34f6-4972-bb01-6841dcee575f"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{hargabeli}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="234" y="3" width="76" height="20" uuid="22b48253-5111-40fe-986e-8745772b9cf4"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{subtotalhargapembelian}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-22" y="-24" width="352" height="1" uuid="e76de7f0-8246-4552-899d-d6c87e3adacf"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="-20" y="21" width="352" height="1" uuid="9b30e83e-3c3b-4a5a-82bf-1e80c1e936f4"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="-22" y="-109" width="352" height="1" uuid="6906e729-357d-4ebd-995f-7b0200762a7e"/>
+				<graphicElement>
+					<pen lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="7" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="108" y="0" width="100" height="17" uuid="618c901c-6b03-4884-bc0a-c3aac54d6716"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="107" splitType="Stretch">
+			<textField>
+				<reportElement x="165" y="7" width="100" height="20" uuid="4e03cff5-af66-4d38-89a6-038fb6badee2"/>
+				<textFieldExpression><![CDATA[$F{totalhargapembelian}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="8" y="7" width="134" height="20" uuid="b53152f1-4287-4f84-ba42-18509b632096"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="27" width="134" height="20" uuid="27a9855a-04e5-4e81-86e0-bdfc30816ece"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<text><![CDATA[Tanggal Pembayaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="47" width="134" height="20" uuid="1149adca-445e-4744-8049-68c3deef97b2"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<text><![CDATA[Total Pembayaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="67" width="134" height="20" uuid="88c5baeb-4d33-4b26-ab71-5ddb00508166"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<text><![CDATA[Sisa Pembayaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="8" y="87" width="134" height="20" uuid="c69a614f-a6fd-4af3-992a-4805c0191588"/>
+				<textElement>
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<text><![CDATA[Kembalian]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="165" y="27" width="100" height="20" uuid="0f7a7e53-4d36-421e-9041-0c8aa56a9770"/>
+				<textFieldExpression><![CDATA[$F{tglpembayaranpembelian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="165" y="47" width="100" height="20" uuid="d299885c-c2cc-4bcb-8b8d-734ec4427772"/>
+				<textFieldExpression><![CDATA[$F{totalpembayaranpembelian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="165" y="67" width="100" height="20" uuid="a06baee5-d9ff-4c7d-875a-70d7fcdb6dd2"/>
+				<textFieldExpression><![CDATA[$F{sisapembayaranpembelian}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="165" y="87" width="100" height="20" uuid="2173478d-f785-4232-84f5-036dc2eb87a0"/>
+				<textFieldExpression><![CDATA[$F{kembalianpembayaranpembelian}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

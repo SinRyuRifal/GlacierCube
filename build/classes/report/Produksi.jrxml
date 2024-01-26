@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="820" pageHeight="842" columnWidth="780" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e6f3aa72-15c2-4115-97bf-221d9779e393">
+	<property name="ireport.zoom" value="1.7715610000000361"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="tgl1" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="tgl2" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+    pd.KODEPRODUKSI,
+    pd.IDMESIN,
+    pd.IDBAHAN,
+    pd.IDPRODUK,
+    pd.IDKARYAWAN,
+    pd.TGLPRODUKSI,
+    pd.JUMLAHBAHAN,
+    pd.JUMLAHPRODUKSI,
+    k.NAMAKARYAWAN,
+    p.NAMAPRODUK,
+    bb.NAMABAHAN
+FROM
+    PRODUKSI pd
+JOIN
+    KARYAWAN k ON pd.IDKARYAWAN = k.IDKARYAWAN
+JOIN
+    PRODUK p ON pd.IDPRODUK = p.IDPRODUK
+JOIN
+    BAHANBAKU bb ON pd.IDBAHAN = bb.IDBAHAN
+WHERE
+ pd.TGLPRODUKSI between $P{tgl1} and $P{tgl2};]]>
+	</queryString>
+	<field name="kodeproduksi" class="java.lang.String"/>
+	<field name="idmesin" class="java.lang.String"/>
+	<field name="idbahan" class="java.lang.String"/>
+	<field name="idproduk" class="java.lang.String"/>
+	<field name="idkaryawan" class="java.lang.String"/>
+	<field name="tglproduksi" class="java.lang.String"/>
+	<field name="jumlahbahan" class="java.lang.Integer"/>
+	<field name="jumlahproduksi" class="java.lang.Integer"/>
+	<field name="namakaryawan" class="java.lang.String"/>
+	<field name="namaproduk" class="java.lang.String"/>
+	<field name="namabahan" class="java.lang.String"/>
+	<variable name="TotalProduksi" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{jumlahproduksi}]]></variableExpression>
+	</variable>
+	<variable name="kodeproduksi_1" class="java.lang.Integer" calculation="DistinctCount">
+		<variableExpression><![CDATA[$F{kodeproduksi}]]></variableExpression>
+	</variable>
+	<variable name="jumlahbahan_1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{jumlahbahan}]]></variableExpression>
+	</variable>
+	<variable name="jumlahproduksi_1" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{jumlahproduksi}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="109" splitType="Stretch">
+			<image>
+				<reportElement x="272" y="5" width="73" height="64" uuid="36f76b2e-ae4d-4e86-b66d-08f67605ed30"/>
+				<imageExpression><![CDATA["C:\\Users\\Rifal\\Dropbox\\PC\\Downloads\\GlacierCube png (2).png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="355" y="18" width="100" height="20" uuid="beeb648d-f1ca-4d2f-aa0f-bdceb9520d36"/>
+				<textElement>
+					<font fontName="Times New Roman" size="15"/>
+				</textElement>
+				<text><![CDATA[GlacierCube]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="355" y="38" width="117" height="20" uuid="d96f1f52-435c-4947-b3e0-dd54f521c5df"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Jl. Kerajaan Candi Lontar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="632" y="18" width="81" height="20" uuid="fcc1ccf4-c03c-4e02-a0a4-bebca939f04f"/>
+				<textElement>
+					<font fontName="Times New Roman" size="15"/>
+				</textElement>
+				<text><![CDATA[PRODUKSI]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="638" y="38" width="64" height="20" uuid="1b65fd54-76dd-446b-b637-c6e24991f4f8"/>
+				<textElement>
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[Detail Produksi]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="80" width="780" height="1" uuid="143f3b26-114a-4bc9-903c-d49e0b57ac14"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="589" y="0" width="95" height="20" uuid="59165427-3181-4198-ae20-49afb062ca99"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Produk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="428" y="0" width="79" height="20" uuid="b756daeb-fe56-4bbb-a9d0-299f86ea5165"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Bahan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="507" y="0" width="82" height="20" uuid="d7836eb7-9335-4af5-b36b-de800eae9285"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jumlah Bahan]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="105" height="20" uuid="060fbf0b-ff65-4971-b900-07438059784f"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Kode Produksi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="105" y="0" width="100" height="20" uuid="d73d5317-d7ff-47de-9e6c-e3a77cc71d5b"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Produksi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="205" y="0" width="116" height="20" uuid="6da18d09-73fe-427f-a2ca-6f18a27825ef"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Mesin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="684" y="0" width="96" height="20" uuid="3b0637c8-6d21-4f3b-bc85-2cefc33d27e6"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jumlah Produk]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="0" width="107" height="20" uuid="9674876d-d5f5-4524-a2c8-cd8357579e59"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Karyawan]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="589" y="0" width="95" height="20" uuid="a4305037-add3-4775-9f1c-795a39e21ce0"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{namaproduk}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="507" y="0" width="82" height="20" uuid="d200c07d-e45b-478e-a44b-ac1aafb30513"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jumlahbahan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="428" y="0" width="79" height="20" uuid="9d8ec375-787d-478c-bed9-81d96bb8c3e9"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{namabahan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="105" height="20" uuid="3a68c217-e2d3-4c2e-980f-d880fc147254"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{kodeproduksi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="105" y="0" width="100" height="20" uuid="e0404847-b145-4d6f-bafc-3e503a9c5abd"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tglproduksi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="321" y="0" width="107" height="20" uuid="6454c846-bd89-495b-8dab-154a25e869fe"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{namakaryawan}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="205" y="0" width="116" height="20" uuid="4fcaa8f1-d72d-4ce8-a2de-c8a2f8463018"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{idmesin}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="684" y="0" width="96" height="20" uuid="1fcdf4df-3379-4682-add7-5c1dd4c44880"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{jumlahproduksi}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement x="0" y="8" width="272" height="20" uuid="922c2b5c-4920-4037-a1aa-4ca61efb03c9"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="660" y="8" width="80" height="20" uuid="fec25154-6aa5-4e22-ade1-756927327a4c"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="740" y="8" width="40" height="20" uuid="a9d070a9-d30e-4026-a781-365033325673"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="89" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="46" width="124" height="20" uuid="6511942d-6f26-42ab-8b71-f682ef8a065f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Produksi:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="26" width="124" height="20" uuid="07906d49-a448-447e-9b02-35bbac332fbb"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Produksi Terlaksana:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="151" y="26" width="100" height="20" uuid="d7158f4f-4796-4118-9f14-c5840054c109"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{kodeproduksi_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="66" width="124" height="20" uuid="ac56417c-7f1b-4a05-a611-ac9fd817745c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Bookman Old Style" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Bahan Diperlukan:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="151" y="66" width="100" height="20" uuid="c0eff461-9ccc-4faa-a10e-68e8d53816c0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{jumlahbahan_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="151" y="46" width="100" height="20" uuid="1e72db92-7471-4259-9f62-eaf3ee35023d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{jumlahproduksi_1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>
